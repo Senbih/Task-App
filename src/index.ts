@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import mongoose from "mongoose";
 import taskRoutes from "./routes/task.routes";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -12,6 +13,7 @@ const app: Application = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI as string;
 app.use(express.json());
+app.use(cors()); // Enable CORS for all origins
 
 // Connect to MongoDB
 mongoose

@@ -5,11 +5,11 @@ export interface ITaskDocument extends ITask, Document {}
 
 const TaskSchema: Schema = new Schema(
   {
-    title: { type: String, required: true },
-    description: { type: String },
+    text: { type: String, required: true },
     completed: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
+TaskSchema.index({ completed: 1 });
 
 export default mongoose.model<ITaskDocument>("Task", TaskSchema);
